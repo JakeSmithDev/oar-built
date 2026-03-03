@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 100">
+  <!-- Hexagonal 3D icon -->
+  <g transform="translate(5, 5)">
+    <!-- Back/left face of hex -->
+    <polygon points="18,25 45,8 45,50 18,67" fill="#3B4859"/>
+    <!-- Bottom face -->
+    <polygon points="18,67 45,50 72,67 45,84" fill="#2E3A47"/>
+    <!-- Front/right face base -->
+    <polygon points="45,8 72,25 72,67 45,50" fill="#4A5568"/>
+    <!-- Left curved edge -->
+    <path d="M18,25 Q8,46 18,67" stroke="#3B4859" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <!-- Diagonal orange stripes on front face -->
+    <clipPath id="frontFace">
+      <polygon points="45,8 72,25 72,67 45,50"/>
+    </clipPath>
+    <g clip-path="url(#frontFace)">
+      <line x1="48" y1="5" x2="72" y2="40" stroke="#E88C30" stroke-width="9" stroke-linecap="butt"/>
+      <line x1="55" y1="5" x2="79" y2="40" stroke="#E88C30" stroke-width="7" stroke-linecap="butt"/>
+    </g>
+  </g>
+
+  <!-- Text: OAR -->
+  <text x="100" y="42" font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="38" fill="#4A5568" letter-spacing="4">OAR</text>
+
+  <!-- Text: BUILT -->
+  <text x="100" y="80" font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="38" fill="#E88C30" letter-spacing="4">BUILT</text>
+</svg>

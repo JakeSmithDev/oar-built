@@ -4,7 +4,43 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OAR Built — Veteran-Owned Technology</title>
+<meta name="description" content="OAR Built is a veteran-owned technology holding company that designs and deploys SaaS platforms, automation systems, and digital infrastructure. Founded by Jake Oakwood and Kevin Reynolds in Maryland.">
+<meta name="theme-color" content="#0C0C0C">
+
+<!-- Open Graph / Social -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="OAR Built — Veteran-Owned Technology">
+<meta property="og:description" content="We design and deploy SaaS platforms, automation systems, and digital infrastructure for operators who move fast and demand reliability.">
+<meta property="og:url" content="https://oarbuilt.com">
+<meta property="og:site_name" content="OAR Built">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OAR Built — Veteran-Owned Technology">
+<meta name="twitter:description" content="Veteran-owned technology company building SaaS platforms, automation systems, and digital infrastructure.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "OAR Built",
+  "url": "https://oarbuilt.com",
+  "description": "Veteran-owned technology holding company building SaaS platforms, automation systems, and digital infrastructure.",
+  "foundingLocation": { "@type": "Place", "address": { "@type": "PostalAddress", "addressRegion": "MD", "addressCountry": "US" } },
+  "founder": [
+    { "@type": "Person", "name": "Jake Oakwood" },
+    { "@type": "Person", "name": "Kevin Reynolds" }
+  ],
+  "knowsAbout": ["SaaS Development", "Automation", "Artificial Intelligence", "Government Contracting"]
+}
+</script>
 <style>
   :root {
     --coal: #0C0C0C;
@@ -93,6 +129,54 @@
   .nav-cta:hover {
     background: var(--copper) !important;
     color: var(--coal) !important;
+  }
+
+  /* HAMBURGER */
+  .hamburger {
+    display: none; background: none; border: none; cursor: pointer;
+    width: 32px; height: 24px; position: relative; z-index: 101;
+  }
+
+  .hamburger span {
+    display: block; width: 100%; height: 2px; background: var(--cream);
+    position: absolute; left: 0; transition: all 0.3s ease;
+  }
+
+  .hamburger span:nth-child(1) { top: 0; }
+  .hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+  .hamburger span:nth-child(3) { bottom: 0; }
+
+  .hamburger.active span:nth-child(1) { top: 50%; transform: translateY(-50%) rotate(45deg); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { bottom: 50%; transform: translateY(50%) rotate(-45deg); }
+
+  /* SKIP NAV */
+  .skip-nav {
+    position: absolute; top: -100%; left: 1rem;
+    padding: 0.75rem 1.5rem; background: var(--copper);
+    color: var(--coal); font-weight: 600; font-size: 0.85rem;
+    text-decoration: none; z-index: 200; border-radius: 0 0 4px 4px;
+    transition: top 0.2s;
+  }
+  .skip-nav:focus { top: 0; }
+
+  /* SCROLL TO TOP */
+  .scroll-top {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 90;
+    width: 44px; height: 44px; background: var(--charcoal);
+    border: 1px solid var(--graphite); color: var(--copper);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; opacity: 0; pointer-events: none;
+    transition: all 0.3s ease; font-size: 1.2rem;
+  }
+
+  .scroll-top.visible { opacity: 1; pointer-events: auto; }
+  .scroll-top:hover { background: var(--graphite); border-color: var(--copper); transform: translateY(-2px); }
+  .scroll-top:focus-visible { outline: 2px solid var(--copper); outline-offset: 2px; }
+
+  /* FOCUS VISIBLE */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--copper); outline-offset: 2px;
   }
 
   /* HERO */
@@ -410,6 +494,10 @@
     width: 5px; height: 5px; background: var(--copper); border-radius: 50%;
   }
 
+  a.venture-card {
+    text-decoration: none; color: inherit; display: block;
+  }
+
   /* CTA / CONTACT */
   .cta {
     padding: 8rem 4rem; text-align: center;
@@ -546,7 +634,21 @@
     .about { grid-template-columns: 1fr; }
     .about-visual { height: 400px; }
     .ventures-grid { grid-template-columns: 1fr; }
-    nav ul { display: none; }
+    .hamburger { display: block; }
+    nav ul {
+      position: fixed; top: 0; right: 0; width: 280px; height: 100vh;
+      background: var(--charcoal); flex-direction: column;
+      padding: 6rem 2rem 2rem; gap: 1.5rem; z-index: 99;
+      border-left: 1px solid var(--graphite);
+      transform: translateX(100%); transition: transform 0.35s ease;
+    }
+    nav ul.open { transform: translateX(0); }
+    .mobile-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5); z-index: 98;
+      opacity: 0; pointer-events: none; transition: opacity 0.35s;
+    }
+    .mobile-overlay.open { opacity: 1; pointer-events: auto; }
     .hero-actions { flex-direction: column; align-items: flex-start; }
     .hero-stat-bar { flex-direction: column; gap: 1.5rem; }
     footer { flex-direction: column; gap: 2rem; text-align: center; }
@@ -557,18 +659,25 @@
 </head>
 <body>
 
-<nav>
+<a href="#main" class="skip-nav">Skip to content</a>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+
+<nav aria-label="Main navigation">
   <a href="#" class="logo">
-    <img src="logo.png" alt="OAR Built">
+    <img src="logo.svg" alt="OAR Built">
   </a>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#ventures">Ventures</a></li>
-    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <ul id="navMenu" role="menubar">
+    <li role="none"><a href="#about" role="menuitem">About</a></li>
+    <li role="none"><a href="#services" role="menuitem">Services</a></li>
+    <li role="none"><a href="#ventures" role="menuitem">Ventures</a></li>
+    <li role="none"><a href="#contact" class="nav-cta" role="menuitem">Contact</a></li>
   </ul>
 </nav>
 
+<main id="main">
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-content">
@@ -675,30 +784,30 @@
       <p>Every platform we offer has been tested under the weight of real operations, real customers, and real revenue.</p>
     </div>
     <div class="ventures-grid">
-      <div class="venture-card reveal">
+      <a href="https://hiddencreekmarina.com" target="_blank" rel="noopener" class="venture-card reveal">
         <div class="venture-icon">&#9875;</div>
         <h3>Hidden Creek Marina</h3>
         <p>Full-service marina operations on Maryland's waterways.</p>
         <div class="venture-status"><div class="venture-status-dot"></div>Active</div>
-      </div>
-      <div class="venture-card reveal">
+      </a>
+      <a href="https://chesapeakebaysportfishing.com" target="_blank" rel="noopener" class="venture-card reveal">
         <div class="venture-icon">&#127907;</div>
         <h3>Chesapeake Bay Sport Fishing</h3>
         <p>Charter fleet with custom booking SaaS and automated operations.</p>
         <div class="venture-status"><div class="venture-status-dot"></div>Active</div>
-      </div>
-      <div class="venture-card reveal">
+      </a>
+      <a href="https://automarinestyle.com" target="_blank" rel="noopener" class="venture-card reveal">
         <div class="venture-icon">&#9881;</div>
         <h3>AutoMarine Style &amp; Protection</h3>
         <p>Vinyl wraps, paint protection film, and signage services.</p>
         <div class="venture-status"><div class="venture-status-dot"></div>Active</div>
-      </div>
-      <div class="venture-card reveal">
+      </a>
+      <a href="#contact" class="venture-card reveal">
         <div class="venture-icon">&#9733;</div>
         <h3>Valor Group</h3>
         <p>Construction and government contracting operations.</p>
         <div class="venture-status"><div class="venture-status-dot"></div>Active</div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -711,6 +820,7 @@
       <input type="hidden" name="_subject" value="New OAR Built Inquiry">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_template" value="box">
+      <input type="hidden" name="_next" value="https://oarbuilt.com/thankyou.html">
       <div class="form-group">
         <label for="name">Name *</label>
         <input type="text" id="name" name="name" placeholder="Your full name" required>
@@ -731,11 +841,12 @@
     </form>
   </div>
 </section>
+</main>
 
 <footer>
   <div class="footer-left">
     <a href="#" class="logo">
-      <img src="logo.png" alt="OAR Built">
+      <img src="logo.svg" alt="OAR Built">
     </a>
     <div class="footer-legal">&copy; 2026 OAR Built. All rights reserved.</div>
     <div class="footer-flag">&#127482;&#127480; Veteran-Owned &bull; Maryland, USA</div>
@@ -748,14 +859,45 @@
   </div>
 </footer>
 
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">&#8593;</button>
+
 <script>
+  // Scroll reveal
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add('visible');
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('navMenu');
+  const overlay = document.getElementById('mobileOverlay');
+
+  function closeMenu() {
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('open');
+    overlay.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = navMenu.classList.toggle('open');
+    hamburger.classList.toggle('active');
+    overlay.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+
+  overlay.addEventListener('click', closeMenu);
+  navMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+
+  // Scroll to top
+  const scrollBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    scrollBtn.classList.toggle('visible', window.scrollY > 600);
+  }, { passive: true });
+  scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 </script>
 
 </body>

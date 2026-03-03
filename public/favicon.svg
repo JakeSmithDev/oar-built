@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <g transform="translate(5, 5)">
+    <!-- Back/left face -->
+    <polygon points="20,22 45,5 45,50 20,67" fill="#3B4859"/>
+    <!-- Bottom face -->
+    <polygon points="20,67 45,50 70,67 45,84" fill="#2E3A47"/>
+    <!-- Front/right face -->
+    <polygon points="45,5 70,22 70,67 45,50" fill="#4A5568"/>
+    <!-- Left curved edge -->
+    <path d="M20,22 Q8,44 20,67" stroke="#3B4859" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <!-- Diagonal orange stripes -->
+    <clipPath id="ff">
+      <polygon points="45,5 70,22 70,67 45,50"/>
+    </clipPath>
+    <g clip-path="url(#ff)">
+      <line x1="48" y1="2" x2="72" y2="42" stroke="#E88C30" stroke-width="11"/>
+      <line x1="56" y1="2" x2="80" y2="42" stroke="#E88C30" stroke-width="9"/>
+    </g>
+  </g>
+</svg>
