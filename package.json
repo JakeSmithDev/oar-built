@@ -1,0 +1,9 @@
+{
+  "name": "oar-built",
+  "version": "1.0.0",
+  "description": "OAR Built — Veteran-Owned Technology",
+  "scripts": {
+    "dev": "npx serve public",
+    "build": "echo 'Static site — no build step needed'"
+  }
+}
